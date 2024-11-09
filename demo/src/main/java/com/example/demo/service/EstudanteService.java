@@ -43,6 +43,10 @@ public class EstudanteService {
     }
 
     public void removerEstudante(Long id) {
+        if (estudanteRepository.existsById(id)) {
         estudanteRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Estudante não encontrado");
+        }
     }
 }
